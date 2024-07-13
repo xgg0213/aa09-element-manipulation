@@ -1,0 +1,16 @@
+.name {
+    color: red;
+    font-weight: bold;
+}
+
+.my-details {
+    border: black solid
+}
+
+.detail {
+    padding: 10px;
+}
+
+li:hover {
+    background-color: green;
+}
