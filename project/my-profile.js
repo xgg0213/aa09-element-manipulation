@@ -1,5 +1,6 @@
 console.log("This is my profile page!");
 
+window.onload = () => {
 function addTitle() {
     // add the title of the page to "(Your name)'s Portfolio"
 
@@ -73,11 +74,84 @@ function addDetails() {
     
 
     document.body.appendChild(ul);
-
-    
-
-
     
 }
 
 addDetails();
+
+function addSection() {
+    const sections = [
+        'My Favorites'
+        ,'My Likes'
+        ,'My Dislikes'
+    ]
+
+    for (let i = 0; i < sections.length; i++) {
+        const newSec = document.createElement('section');
+        const newUl = document.createElement('ul');
+        const newLi = document.createElement('li');
+        newLi.innerText = 'samples';
+        newLi.className = 'newLi';
+        newSec.className = 'section';
+        newSec.innerText = sections[i];
+
+        newUl.appendChild(newLi);
+        newSec.appendChild(newUl);
+        document.body.appendChild(newSec);
+    }
+}
+
+addSection();
+
+function updateHTML() {
+    const elements = document.getElementsByClassName('newLi');
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].innerText = 'updated samples';
+    }
+}
+
+updateHTML();
+
+
+function countDown () {
+    let diff;
+    let diffD;
+    let diffH;
+    let diffM;
+    let diffS;
+
+    const cd = document.createElement('div');
+    const contents = document.createElement('span');
+    const time = () => {
+        setInterval(() => {
+            const bday = new Date('03/09/2025')
+            const cday = new Date();
+            diff = bday.getTime() - cday.getTime();
+            contents.innerText = diff;
+            // diffD = Math.floor(diff/(24*60*60));
+            // diffH = Math.floor((diff - diffD*24*60*60)/(60*60))
+            // diffM = Math.floor((diff - diffD*24*60*60 - diffH *60*60)/60);
+            // diffS = Math.floor(diff - diffD*24*60*60 - diffH *60*60 - diffM*60);;     
+            
+        }, 1000)
+    }
+
+    time();
+    
+    cd.innerHTML = 'Count Down To My Next Birthday: ';
+    cd.appendChild(contents)
+    
+            
+    
+
+    // const contents = document.createElement('span');
+    // contents.innerText = diffD;
+    // cd.appendChild(contents);
+    // cd.innerHTML = 'Count Down To My Next Birthday: ' + diffD + ' days ' + diffH + ' hours ' + diffM + ' minutes ' + diffS + ' seconds';   
+    // cd.innerHTML = 'Count Down To My Next Birthday: ' + diff;
+    document.body.appendChild(cd);
+
+}
+
+countDown();
+}
